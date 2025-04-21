@@ -136,7 +136,7 @@ try:
         results.append({"Paso": "Buscar ticket en index", "Resultado": "Fallo: No encontrado"})
 
 except Exception as e:
-    print("❌ Error durante la prueba:")
+    print("Error durante la prueba:")
     traceback.print_exc()
     results.append({"Paso": "Error", "Resultado": str(e)})
 
@@ -144,4 +144,4 @@ finally:
     driver.quit()
 
     generate_html_report(results)
-    print("✅ El reporte HTML ha sido generado.")
+    print("El reporte HTML ha sido generado.")
