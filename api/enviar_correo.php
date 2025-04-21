@@ -22,8 +22,8 @@ try {
   $mail->SMTPSecure = 'tls';
   $mail->Port = 587;
 
-  $mail->setFrom('tucorreo@gmail.com', 'Sistema de Tickets');
-  $mail->addAddress($ticket['correo_responsable']);
+  $mail->setFrom('i.encarnacion003@gmail.com', 'Sistema de Tickets');
+  $mail->addAddress($ticket['Encarnacion2112']);
 
   $mail->Subject = 'Ticket Finalizado';
   $mail->Body = \"Hola {$ticket['responsable']}, el ticket '{$ticket['titulo']}' ha sido marcado como finalizado.\";

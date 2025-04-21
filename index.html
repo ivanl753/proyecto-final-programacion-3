@@ -15,12 +15,13 @@
       </div>
     </div>
 
-    <ul class="list-group" id="ticketList"></ul>
+    <ul class="list-group" id="ticketList">
+    </ul>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      fetch('api/obtener_tickets.php') // Trae solo los NO finalizados
+      fetch('api/obtener_todos.php')
         .then(res => res.json())
         .then(data => {
           const ul = document.getElementById('ticketList');
@@ -32,7 +33,7 @@
                 <h5 class="mb-1">${t.titulo}</h5>
                 <small class="text-muted">${t.responsable} | Prioridad: ${t.prioridad} | Estado: ${t.estado}</small>
               </div>
-              <select class="form-select w-auto" onchange="cambiarEstado(${t.id}, this.value, this)">
+              <select class="form-select w-auto" onchange="cambiarEstado(${t.id}, this.value)">
                 <option value="Disponible"${t.estado === 'Disponible' ? ' selected' : ''}>Disponible</option>
                 <option value="En Proceso"${t.estado === 'En Proceso' ? ' selected' : ''}>En Proceso</option>
                 <option value="Finalizado"${t.estado === 'Finalizado' ? ' selected' : ''}>Finalizado</option>
@@ -43,26 +44,21 @@
         });
     });
 
-    async function cambiarEstado(id, estado, selectElement) {
+    async function cambiarEstado(id, estado) {
       const res = await fetch('api/actualizar_estado.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, estado })
       });
       const data = await res.json();
-
-      if (data.success) {
-        if (estado === 'Finalizado') {
-          await fetch('api/enviar_correo.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id })
-          });
-          alert("Ticket finalizado y correo enviado.");
-          // Quitar ticket de la lista
-          const li = selectElement.closest('li');
-          li.remove();
-        }
+      if (data.success && estado === 'Finalizado') {
+        await fetch('api/enviar_correo.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id })
+        });
+        alert("Ticket finalizado y correo enviado.");
+        location.reload();
       }
     }
   </script>

@@ -1,0 +1,70 @@
+
+    <html>
+    <head>
+        <title>Reporte de Pruebas</title>
+        <style>
+            body { font-family: Arial, sans-serif; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+            .success { color: green; }
+            .fail { color: red; }
+        </style>
+    </head>
+    <body>
+        <h1>Reporte de Pruebas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paso</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Ticket creado visible en index</td>
+                <td class="success">Éxito</td>
+            </tr>
+        
+            <tr>
+                <td>Cambio de estado a finalizado</td>
+                <td class="fail">Fallo: Botón no encontrado</td>
+            </tr>
+        
+            <tr>
+                <td>Error</td>
+                <td class="fail">Message: no such element: Unable to locate element: {"method":"xpath","selector":".//button[contains(text(),'Finalizar')]"}
+  (Session info: chrome=135.0.7049.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF71A565355+78597]
+	GetHandleVerifier [0x00007FF71A5653B0+78688]
+	(No symbol) [0x00007FF71A3191AA]
+	(No symbol) [0x00007FF71A36F149]
+	(No symbol) [0x00007FF71A36F3FC]
+	(No symbol) [0x00007FF71A361BEC]
+	(No symbol) [0x00007FF71A39712F]
+	(No symbol) [0x00007FF71A361AB6]
+	(No symbol) [0x00007FF71A397300]
+	(No symbol) [0x00007FF71A3BF2BB]
+	(No symbol) [0x00007FF71A396EC3]
+	(No symbol) [0x00007FF71A3603F8]
+	(No symbol) [0x00007FF71A361163]
+	GetHandleVerifier [0x00007FF71A80EF0D+2870973]
+	GetHandleVerifier [0x00007FF71A8096B8+2848360]
+	GetHandleVerifier [0x00007FF71A826993+2967875]
+	GetHandleVerifier [0x00007FF71A58019A+188746]
+	GetHandleVerifier [0x00007FF71A58847F+222255]
+	GetHandleVerifier [0x00007FF71A56D2D4+111236]
+	GetHandleVerifier [0x00007FF71A56D482+111666]
+	GetHandleVerifier [0x00007FF71A5535A9+5465]
+	BaseThreadInitThunk [0x00007FFD6561E8D7+23]
+	RtlUserThreadStart [0x00007FFD6695C5DC+44]
+</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
